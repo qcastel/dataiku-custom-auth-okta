@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dataiku.customauth</groupId>
+    <artifactId>okta</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.okta.sdk</groupId>
+            <artifactId>okta-sdk-api</artifactId>
+            <version>11.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.okta.sdk</groupId>
+            <artifactId>okta-sdk-impl</artifactId>
+            <version>11.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>dataiku-core</groupId>
+            <artifactId>dataiku-core</artifactId>
+            <version>dataiku-core</version>
+            <scope>system</scope>
+            <systemPath>${env.DKUINSTALLDIR}/dist/dataiku-core.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>dataiku-app-platform</groupId>
+            <artifactId>dataiku-app-platform</artifactId>
+            <version>dataiku-app-platform</version>
+            <scope>system</scope>
+            <systemPath>${env.DKUINSTALLDIR}/dist/dataiku-app-platform.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>dataiku-dss-core</groupId>
+            <artifactId>dataiku-dss-core</artifactId>
+            <version>dataiku-dss-core</version>
+            <scope>system</scope>
+            <systemPath>${env.DKUINSTALLDIR}/dist/dataiku-dss-core.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>dataiku-scoring</groupId>
+            <artifactId>dataiku-scoring</artifactId>
+            <version>dataiku-scoring</version>
+            <scope>system</scope>
+            <systemPath>${env.DKUINSTALLDIR}/dist/dataiku-scoring.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>dataiku-dip</groupId>
+            <artifactId>dataiku-dip</artifactId>
+            <version>dataiku-dip</version>
+            <scope>system</scope>
+            <systemPath>${env.DKUINSTALLDIR}/dist/dataiku-dip.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- any other plugins -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
