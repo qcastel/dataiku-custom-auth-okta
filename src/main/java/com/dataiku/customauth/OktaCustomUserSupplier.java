@@ -1,4 +1,4 @@
-package com.example.customauth;
+package com.dataiku.customauth;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,11 +26,11 @@ import com.okta.sdk.client.Clients;
  * This supplier needs to fetch the user from the external store using the user attribute resulting from the authentication in DSS and then map
  * the user into a DSS user attribute, in order to sync or provisioning it if needed.
  */
-public class SampleCustomUserSupplier implements CustomUserSupplier {
+public class OktaCustomUserSupplier implements CustomUserSupplier {
     private final GroupApi groupApi;
     private final  UserApi userApi;
 
-    public SampleCustomUserSupplier() {
+    public OktaCustomUserSupplier() {
         String OKTA_API_KEY = System.getenv("OKTA_API_KEY");
         String OKTA_ORG_URL = System.getenv("OKTA_ORG_URL");
         TokenClientCredentials tokenClientCredentials = new TokenClientCredentials(OKTA_API_KEY);

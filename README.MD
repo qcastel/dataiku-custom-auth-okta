@@ -17,4 +17,4 @@ Note: This custom auth is not supported by dataiku and serves as an example.
     - `OKTA_ORG_URL`: the okta org url
 - Restart DSS
 - Setup the custom auth properties with the properties:
-  - `Custom user supplier full class name`: `com.example.customauth.SampleCustomUserSupplier`
+  - `Custom user supplier full class name`: `com.dataiku.customauth.OktaCustomUserSupplier`
