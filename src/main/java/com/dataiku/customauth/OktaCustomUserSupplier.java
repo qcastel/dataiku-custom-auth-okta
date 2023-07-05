@@ -63,6 +63,12 @@ public class OktaCustomUserSupplier implements CustomUserSupplier {
                         userAttributes.login = oktaUser.getProfile().getLogin();
                         userAttributes.email = oktaUser.getProfile().getEmail();
                         userAttributes.displayName = oktaUser.getProfile().getDisplayName();
+                        try {
+                            List<Group> groups = userApi.listUserGroups(oktaUser.getId());
+                            userAttributes.sourceGroupNames = groups.stream().map(g -> g.getProfile().getName()).collect(Collectors.toSet());
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
                         return userAttributes;
                     })
                     .orElseThrow(() -> new UserNotFoundException("Couldn't find user '" + userIdentity.login + "'"));
